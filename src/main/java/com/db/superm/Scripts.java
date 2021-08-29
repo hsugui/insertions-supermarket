@@ -7,6 +7,18 @@ import com.github.javafaker.Faker;
 
 public class Scripts {
 	
+	public static void insertEstoque() {
+		for (int i = 0; i < 100; i++) {
+			int cdProduto = (int) Math.floor(Math.random() * 108 + 1);
+			int cdLoja = (int) Math.floor(Math.random() * 5 + 1);
+			int qtdEstoque = (int) Math.floor(Math.random() * 1000 + 1);
+			
+			String estoque = "INSERT INTO ESTOQUE (CODIGO_PRODUTO, CODIGO_LOJA, QUANTIDADE) VALUES (" + cdProduto + ", " + cdLoja + ", " + qtdEstoque + ");";
+			
+			System.out.println(estoque);	
+		}
+	}
+	
 	public static void insertclienteEndereco() {
 		for (int i = 79; i < 111; i++) {
 			String s = "INSERT INTO CLIENTE_ENDERECO (CODIGO_CLIENTE, CODIGO_ENDERECO) VALUES (" + i + "," + (i-65) + ");";
@@ -170,5 +182,6 @@ public class Scripts {
 //		insertCliente();
 //		insertDocFisc();
 //		insertPedidoWeb();
+//		insertEstoque();
 	}
 }
