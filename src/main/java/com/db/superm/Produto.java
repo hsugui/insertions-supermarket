@@ -5,26 +5,26 @@ import java.util.Map;
 
 public class Produto {
 
-	double pv1 = 24.99; // 1
-	double pv2 = 22.99; // 2
-	double pv3 = 14.99; // 3
-	double pv4 = 12.99; // 4
-	double pv5 = 10.99; // 5
-	double pv6 = 26.99; // 6
-	double pv7 = 5.99; // 7
-	double pv8 = 13.99; // 8
-	double pv9 = 20.99; // 9
-	double pv10 = 0.99; // 10
-	double pv11 = 11.99; // 11
-	double pv12 = 21.49; // 12
-	double pv13 = 30.49; // 13
-	double pv14 = 41.99; // 14
-	double pv15 = 52.99; // 15
-	double pv16 = 60.19; // 16
-	double pv17 = 77.98; // 17
-	double pv18 = 85.00; // 18
-	double pv19 = 92.16; // 19
-	double pv20 = 100.1; // 20
+	double pv1 = 24.99;
+	double pv2 = 22.99;
+	double pv3 = 14.99;
+	double pv4 = 12.99;
+	double pv5 = 10.99;
+	double pv6 = 26.99;
+	double pv7 = 5.99;
+	double pv8 = 13.99;
+	double pv9 = 20.99;
+	double pv10 = 0.99;
+	double pv11 = 11.99;
+	double pv12 = 21.49;
+	double pv13 = 30.49;
+	double pv14 = 41.99;
+	double pv15 = 52.99;
+	double pv16 = 60.19;
+	double pv17 = 77.98;
+	double pv18 = 85.00;
+	double pv19 = 92.16;
+	double pv20 = 100.1;
 	
 	public Map<Integer, Double> createMap() {
 		
@@ -38,6 +38,7 @@ public class Produto {
 		map.put(6, pv2);
 		map.put(7, pv8);
 		map.put(8, pv3);
+		map.put(9, pv18);
 		map.put(10, pv14);
 		map.put(11, pv15);
 		map.put(12, pv12);
@@ -137,6 +138,8 @@ public class Produto {
 		map.put(106, pv5);
 		map.put(107, pv4);
 		map.put(108, pv3);
+		map.put(109, pv17);
+		map.put(110, pv11);
 		
 		return map;
 	}

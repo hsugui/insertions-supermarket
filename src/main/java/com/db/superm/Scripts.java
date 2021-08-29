@@ -1,5 +1,6 @@
 package com.db.superm;
 
+import java.util.ArrayList;
 import java.util.Map;
 import java.util.concurrent.ThreadLocalRandom;
 
@@ -75,9 +76,9 @@ public class Scripts {
 		Produto produto = new Produto();
 		Map<Integer, Double> map = produto.createMap();
 
-		for (int i = 0; i < 30; i++) {
+		for (int i = 0; i < 10; i++) {
 			double random = Math.random();
-			int cdDocFiscal = (int) Math.floor(random * 994 + 1);
+			int cdDocFiscal = (int) Math.floor(random * (9999-1000) + 1001);
 			int nrDocFiscal = (int) Math.floor(random * (999999-100000) + 100001);
 			int cdCliente = (int) Math.floor(random * 110 + 1);
 			int cdLoja = (int) Math.floor(random * 5 + 1);
@@ -91,30 +92,36 @@ public class Scripts {
 			double icms;
 			double valorTotal = 0;
 		
+			ArrayList<String> list = new ArrayList<>();
+			
 			for(int j = 0; j < 2; j++) {
 				double randomItem = Math.random();
-				int randomMap = (int) Math.floor(randomItem * 108 + 1);
-				cdProduto = (int) Math.floor(randomItem * 108 + 1);
+				int produtoMapa = (int) (randomItem * 110 + 1);
+				int randomMap = (int) Math.floor(produtoMapa);
+				cdProduto = (int) Math.floor(produtoMapa);
 				qtdProd = (int) Math.floor(randomItem * 4 + 1);
 				valorUni =  map.get(randomMap);
-				icms = valorUni * qtdProd * 0.12;
+				icms = valorUni * qtdProd * 0.25;
 				
 				String itemCaixa = "INSERT INTO ITEM_CAIXA (ID_ITEM, CODIGO_DOC_FISCAL, CODIGO_PRODUTO,"
 						+ "QUANTIDADE_PRODUTO, VALOR_UNITARIO, VALOR_ICMS, PERCENTUAL_ICMS) VALUES ("
-						+ idItem + "," + cdDocFiscal + "," + cdProduto + "," + qtdProd + "," + valorUni + "," + String.format("%.2f", icms) + "," + "12.0);";
+						+ idItem + "," + cdDocFiscal + "," + cdProduto + "," + qtdProd + "," + valorUni + "," + String.format("%.2f", icms) + "," + "25.0);";
 				
-				System.out.println(itemCaixa);
+				list.add(itemCaixa);
 				idItem++;
 				valorTotal += valorUni * qtdProd;
 			}
 			
 			String documentoFiscal = "INSERT INTO DOCUMENTO_FISCAL (CODIGO_DOC_FISCAL, NUMERO_DOC_FISCAL, SERIE_DOC_FISCAL,"
 					+ "CODIGO_CLIENTE, CODIGO_LOJA, NUMERO_CHAVE_ACESSO, DATA_EMISSAO, VALOR_TOTAL) VALUES ("
-					+ cdDocFiscal + "," + "'" + nrDocFiscal + "'," + "'" + 200 + "'," +
+					+ cdDocFiscal + "," + "'" + nrDocFiscal + "'," + "'" + 600 + "'," +
 					cdCliente + "," + cdLoja + "," + "'" + chave + " " + chave + " " + chave + " " + chave + "'" + ","
 					+ "'2021-08-" + dia + "'" + "," + String.format("%.2f", valorTotal) + ");";
 			
 			System.out.println(documentoFiscal);
+			for (int k = 0; k < list.size(); k++) {
+				System.out.println(list.get(k));
+			}
 			System.out.println();
 		}
 	}
@@ -123,7 +130,7 @@ public class Scripts {
 		Produto produto = new Produto();
 		Map<Integer, Double> map = produto.createMap();
 
-		for (int i = 0; i < 50; i++) {
+		for (int i = 0; i < 5; i++) {
 			double random = Math.random();
 			int cdDocFiscal = (int) Math.floor(random * (9999-1000) + 1001);
 			int nrDocFiscal = (int) Math.floor(random * (999999-100000) + 100001);
@@ -138,32 +145,36 @@ public class Scripts {
 			double icms;
 			double valorTotal = 0;
 			
-			int cdPedWeb = (int) Math.floor(Math.random() * 994 + 1);
+			int cdPedWeb = (int) Math.floor(Math.random() * 9999 + 1);
 			
-			for(int j = 0; j < 1; j++) {
+			ArrayList<String> listCaixa = new ArrayList<>();
+			ArrayList<String> listWeb = new ArrayList<>();
+			
+			for(int j = 0; j < 5; j++) {
 				double randomItem = Math.random();
-				int randomMap = (int) Math.floor(randomItem * 108 + 1);
-				cdProduto = (int) Math.floor(randomItem * 108 + 1);
+				int produtoMapa = (int) (randomItem * 110 + 1);
+				int randomMap = (int) Math.floor(produtoMapa);
+				cdProduto = (int) Math.floor(produtoMapa);
 				qtdProd = (int) Math.floor(randomItem * 4 + 1);
 				valorUni =  map.get(randomMap);
-				icms = valorUni * qtdProd * 0.15;
+				icms = valorUni * qtdProd * 0.2;
 				
 				String itemCaixa = "INSERT INTO ITEM_CAIXA (ID_ITEM, CODIGO_DOC_FISCAL, CODIGO_PRODUTO,"
 						+ "QUANTIDADE_PRODUTO, VALOR_UNITARIO, VALOR_ICMS, PERCENTUAL_ICMS) VALUES ("
-						+ idItem + "," + cdDocFiscal + "," + cdProduto + "," + qtdProd + "," + valorUni + "," + String.format("%.2f", icms) + "," + "15.0);";
+						+ idItem + "," + cdDocFiscal + "," + cdProduto + "," + qtdProd + "," + valorUni + "," + String.format("%.2f", icms) + "," + "20.0);";
 				
 			 	String itemWeb =  "INSERT INTO ITEM_WEB (ID_ITEM, CODIGO_DOC_FISCAL, CODIGO_PEDIDO_WEB) VALUES "
 			 			+ "(" + idItem + ", " + cdDocFiscal + ", " + cdPedWeb + ");";
 				
-				System.out.println(itemCaixa);
-				System.out.println(itemWeb);
+			 	listCaixa.add(itemCaixa);
+			 	listWeb.add(itemWeb);
 				idItem++;
 				valorTotal += valorUni * qtdProd;
 			}
 			
 			String documentoFiscal = "INSERT INTO DOCUMENTO_FISCAL (CODIGO_DOC_FISCAL, NUMERO_DOC_FISCAL, SERIE_DOC_FISCAL,"
 					+ "CODIGO_CLIENTE, CODIGO_LOJA, NUMERO_CHAVE_ACESSO, DATA_EMISSAO, VALOR_TOTAL) VALUES ("
-					+ cdDocFiscal + "," + "'" + nrDocFiscal + "'," + "'" + 400 + "'," +
+					+ cdDocFiscal + "," + "'" + nrDocFiscal + "'," + "'" + 500 + "'," +
 					cdCliente + ", NULL," + "'" + chave + " " + chave + " " + chave + " " + chave + "'" + ","
 					+ "'2021-08-" + dia + "'" + "," + String.format("%.2f", valorTotal) + ");";
 			
@@ -172,6 +183,10 @@ public class Scripts {
 			
 			System.out.println(documentoFiscal);
 			System.out.println(pedidoWeb);
+			for (int k = 0; k < listCaixa.size(); k++) {
+				System.out.println(listCaixa.get(k));
+				System.out.println(listWeb.get(k));
+			}
 			System.out.println();
 		}
 	}
