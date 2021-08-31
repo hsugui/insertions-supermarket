@@ -7,7 +7,6 @@ public class Scripts {
 //		Endereco.insertEndereco(100);
 //		Cliente.insertCliente(10);
 //		Estoque.insertEstoque(100);
-//		Pedido.insertDocFisc(1, 2);
 //		Pedido.insertDocFisc(10, 5, true);
 	}
 }

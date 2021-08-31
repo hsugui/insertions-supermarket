@@ -47,9 +47,7 @@ public class Pedido {
 			int nrDocFiscal = (int) Math.floor(random * (999999 - 100000) + 100001);
 			long chave = ThreadLocalRandom.current().nextLong(10_000_000_000L, 100_000_000_000L);
 
-			if (jaExisteInt(listaCdDFs, cdDocFiscal) || jaExisteInt(listaNrDFs, nrDocFiscal)
-					|| jaExisteLong(listaChaves, chave))
-				continue;
+			if (jaExisteInt(listaCdDFs, cdDocFiscal) || jaExisteInt(listaNrDFs, nrDocFiscal) || jaExisteLong(listaChaves, chave)) continue;
 
 			listaCdDFs.add(cdDocFiscal);
 			listaNrDFs.add(nrDocFiscal);
