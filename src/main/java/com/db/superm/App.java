@@ -5,7 +5,7 @@ package com.db.superm;
  *
  */
 public class App {
-    public static void main( String[] args ) {
-        System.out.println("Hello, Supermarket!");
-    }
+	public static void main(String[] args) {
+		System.out.println("Hello, Supermarket!");
+	}
 }
